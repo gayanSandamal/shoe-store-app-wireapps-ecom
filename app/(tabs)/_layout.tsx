@@ -11,8 +11,24 @@ export default function TabLayout() {
   return (
     <Tabs
       screenOptions={{
-        tabBarActiveTintColor: Colors[colorScheme ?? 'light'].tint,
+        tabBarActiveTintColor: Colors[colorScheme ?? 'light'].white,
+        tabBarInactiveTintColor: Colors[colorScheme ?? 'light'].icon,
         headerShown: false,
+        tabBarShowLabel: false,
+        tabBarStyle: {
+          position: 'absolute',
+          bottom: 15,
+          left: 10,
+          right: 10,
+          paddingTop: 0,
+          paddingBottom: 5,
+          alignItems: 'center',
+          alignContent: 'center',
+          justifyContent: 'center',
+          borderColor: 'black',
+          borderRadius: 20,
+          backgroundColor: Colors[colorScheme ?? 'light'].primary,
+        }
       }}>
       <Tabs.Screen
         name="index"
@@ -24,11 +40,29 @@ export default function TabLayout() {
         }}
       />
       <Tabs.Screen
-        name="explore"
+        name="shop"
         options={{
-          title: 'Explore',
+          title: 'Shop',
           tabBarIcon: ({ color, focused }) => (
-            <TabBarIcon name={focused ? 'code-slash' : 'code-slash-outline'} color={color} />
+            <TabBarIcon name={focused ? 'grid' : 'grid-outline'} color={color} />
+          ),
+        }}
+      />
+      <Tabs.Screen
+        name="favourites"
+        options={{
+          title: 'Favourites',
+          tabBarIcon: ({ color, focused }) => (
+            <TabBarIcon name={focused ? 'heart' : 'heart-outline'} color={color} />
+          ),
+        }}
+      />
+      <Tabs.Screen
+        name="profile"
+        options={{
+          title: 'Profile',
+          tabBarIcon: ({ color, focused }) => (
+            <TabBarIcon name={focused ? 'person' : 'person-outline'} color={color} />
           ),
         }}
       />

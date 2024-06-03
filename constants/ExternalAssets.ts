@@ -1,0 +1,1 @@
+export const NEW_COLLECTION = "https://thumbs.dreamstime.com/b/fashion-white-sneakers-neon-light-sport-shoes-training-gym-creative-minimalism-s-concept-210109241.jpg";
