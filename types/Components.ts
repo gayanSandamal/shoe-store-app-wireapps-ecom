@@ -21,6 +21,7 @@ export type BtnProps = {
   id?: string | number
   onPress?: () => void
   title: string
+  bgColor?: string
   color?: string
 }
 
@@ -29,4 +30,9 @@ export type BtnGroupProps = {
   onPress: (btn: BtnProps) => void
   color: string
   selectedId: string | number | undefined
+}
+
+export type SearchProps = {
+  placeholder: string
+  onSubmit: (text: string) => void
 }

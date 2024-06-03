@@ -23,7 +23,7 @@ export const ContentSection = (props: SectionProps) => {
   const { title, link, slot, cardMode = true } = props;
   return (
     <View className="mb-4">
-      {title && <View className="flex flex-row items-end justify-between mb-4">
+      {title && <View className="flex flex-row items-end justify-between mb-2">
         <Text className="text-base font-semibold text-gray-600">
           {title}
         </Text>

@@ -10,6 +10,8 @@ import { CategoriesStrip } from '@/components/Product/Categories';
 import { useFetchAllProductsQuery } from './../../api'
 import { Products } from '@/components/Product/Products';
 import { getUniqueCategories } from '@/utils/category.utils';
+import { router } from 'expo-router';
+import { Product } from '@/types/Products';
 
 const HomeScreen = () => {
   const { data, isLoading } = useFetchAllProductsQuery({});
@@ -23,9 +25,12 @@ const HomeScreen = () => {
 
   const offerSection = <Vivid title="New Collecti\on" subtitleLine1="Discount 50% for" subtitleLine2="the first transaction" button={{ title: 'Shop Now', href: "/shop" }} bgImgUri={NEW_COLLECTION} />
 
-  const categoriesSection = <CategoriesStrip categories={getUniqueCategories(data)} onCategoryPress={() => {}} />
+  const categoriesSection = <CategoriesStrip categories={getUniqueCategories(data)} onCategoryPress={() => { }} />
 
-  const productsSection = <Products products={data} isLoading={isLoading} onPress={() => { }} />
+  const navigateToProduct = (product: Product) => {
+    router.push({ pathname: '/product/[id]', params: { id: product.id, title: product.name } });
+  }
+  const productsSection = <Products products={data} isLoading={isLoading} onPress={navigateToProduct} />
 
   return (
     <SafeAreaView>

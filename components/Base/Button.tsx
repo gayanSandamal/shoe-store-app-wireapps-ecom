@@ -7,12 +7,11 @@ import { Text, View, TouchableOpacity, ScrollView, ButtonProps } from 'react-nat
 
 
 export const Btn = (props: BtnProps) => {
-  const colorScheme = useColorScheme();
-  const { onPress, title = 'Save', color = Colors[colorScheme ?? 'light'].primary } = props;
+  const { onPress, title = 'Save', color = 'text-gray-700', bgColor = 'bg-white' } = props;
   return (
     <TouchableOpacity onPress={onPress}>
-      <View className='rounded-md bg-white px-3 py-3 flex justify-center shadow-sm'>
-        <Text className='font-semibold m-auto' style={{ color }}>{title}</Text>
+      <View className={`rounded-md ${bgColor} px-3 py-3 flex justify-center shadow`}>
+        <Text className={`font-semibold m-auto ${color}`}>{title}</Text>
       </View>
     </TouchableOpacity>
   );

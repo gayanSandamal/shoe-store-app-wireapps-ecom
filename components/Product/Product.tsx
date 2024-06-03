@@ -7,6 +7,10 @@ const styles = StyleSheet.create({
     width: '100%',
     height: 120,
   },
+  inStock: {
+    height: 10,
+    width: 10
+  }
 })
 
 export const ProductCard = (props: ProductProps) => {
@@ -19,6 +23,17 @@ export const ProductCard = (props: ProductProps) => {
           style={styles.image}
           source={{ uri: product.mainImage }}
         />
+        {
+          product.stockStatus === 'IN STOCK' ?
+            <View className='flex flex-row items-center'>
+              <View className="rounded-full bg-green-600" style={styles.inStock}></View>
+              <Text className='text-gray-900 text-xs ml-2'>In Stock</Text>
+            </View> :
+            <View className='flex flex-row items-center'>
+              <View className="rounded-full bg-red-400" style={styles.inStock}></View>
+              <Text className='text-gray-900 text-xs ml-2'>Out of Stock</Text>
+            </View>
+        }
       </View>
       <View className='flex flex-row'>
         <Text className='text-lg font-semibold text-gray-700'>{product.price.amount} {product.price.currency}</Text>
