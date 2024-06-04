@@ -1,9 +1,15 @@
-import { View, Text, Image, TouchableOpacity, Pressable } from "react-native"
+import { View, Text, Image, TouchableOpacity, Pressable, StyleSheet } from "react-native"
 import NumberInput from "../Base/NumberInput"
 import { useState } from "react"
 import Ionicons from '@expo/vector-icons/Ionicons'
 import { CartItemProps } from "@/types/Components"
 import { router } from 'expo-router';
+
+const styles = StyleSheet.create({
+  removeIcon: {
+    right: 16,
+  }
+})
 
 export const CartItemComponent = (props: CartItemProps) => {
   const { item, onRemove, onUpdateQty, onPressImage } = props
@@ -24,11 +30,11 @@ export const CartItemComponent = (props: CartItemProps) => {
         </Pressable>
       </View>
       <View className={`w-2/3 flex flex-col justify-between flex-grow`}>
-        <View className="flex flex-row items-center justity-between w-full">
-          <Pressable onPress={navigateToProduct}>
+        <View className="flex flex-row items-center justity-between">
+          <Pressable onPress={navigateToProduct} className="w-full">
             <Text className={`text-sm font-semibold text-gray-800 underline`} numberOfLines={1} style={{ width: '100%', maxWidth: 200 }}>{item.name}</Text>
           </Pressable>
-          <TouchableOpacity onPress={() => onRemove(item)} >
+          <TouchableOpacity onPress={() => onRemove(item)} style={styles.removeIcon}>
             <Ionicons size={24} name="trash" color='red' />
           </TouchableOpacity>
         </View>

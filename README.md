@@ -1,50 +1,78 @@
-# Welcome to your Expo app 👋
+## Wire Apps - e-commerce mobile app (Shoe Store)
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+This document provides a detailed overview of the technical aspects of this React Expo App.
 
-## Get started
+**Tech Stack:**
 
-1. Install dependencies
+* **React Expo SDK 51:** This project utilizes React Expo SDK 51 for building a cross-platform mobile application (iOS and Android) using React and JavaScript. Expo provides a streamlined development environment with built-in tools and libraries for a faster development experience.
+
+* **Expo Routing:** Expo routing is implemented for managing navigation within the app. This allows for defining different screens and transitions between them.
+
+* **Redux Toolkit:** Redux Toolkit is used for state management in the application. It simplifies the setup and usage of Redux, a popular state management library, by providing utilities and abstractions like reducers, slices, and actions.
+
+* **Tailwind CSS + NativeWind:** Tailwind CSS provides a utility-first approach to styling React components. It offers a comprehensive set of pre-defined classes for layout, typography, colors, and more. NativeWind integrates Tailwind CSS seamlessly within Expo projects, allowing for easy styling of your application's UI.
+
+* **Jest:** Jest is a popular JavaScript testing framework used for unit and integration testing of the application's components and logic.
+
+
+**Screenshots:**
+
+<table>
+   <tr>
+      <td><img src="/screenshots/screenshot-1.png" width="150" height="300"/></td>
+      <td><img src="/screenshots/screenshot-2.png" width="150" height="300"/></td>
+      <td><img src="/screenshots/screenshot-3.png" width="150" height="300"/></td>
+      <td><img src="/screenshots/screenshot-4.png" width="150" height="300"/></td>
+      <td><img src="/screenshots/screenshot-5.png" width="150" height="300"/></td>
+      <td><img src="/screenshots/screenshot-6.png" width="150" height="300"/></td>
+      <td><img src="/screenshots/screenshot-7.png" width="150" height="300"/></td>
+      <td><img src="/screenshots/screenshot-8.png" width="150" height="300"/></td>
+      <td><img src="/screenshots/screenshot-9.png" width="150" height="300"/></td>
+      <td><img src="/screenshots/screenshot-10.png" width="150" height="300"/></td>
+      <td><img src="/screenshots/screenshot-11.png" width="150" height="300"/></td>
+   </tr>
+</table>
+
+**Development Setup:**
+
+1. **Prerequisites:**
+    - Node.js and npm (or yarn) installed on your machine.
+
+2. **Cloning the Repository:**
+    - Clone this repository using Git:
+
+        ```https://github.com/gayanSandamal/shoe-store-app-wireapps-ecom```
+
+    - Add API URL to the .env file
+        ```
+        BASE_API='https://s3-eu-west-1.amazonaws.com/api.themeshplatform.com/'
+        ```
+
+3. **Installing Dependencies:**
+    - Navigate to the project directory in your terminal.
+    - Run `npm install` (or `yarn install`) to install all required dependencies.
+
+4. **Running the App:**
+    - With dependencies installed, you can run the app in development mode using:
+        ```bash
+        npm run start
+        ```
+        or
+        ```
+        npm run iod
+        ```
+        or 
+        ```
+        npm run android
+        ```
+    - This will launch the Expo development server and open the app on your device or emulator.
+
+**Testing:**
+
+- Unit and integration tests are written using Jest. 
+- To run the tests, navigate to the project directory in your terminal and run:
 
    ```bash
-   npm install
+   npm run test
    ```
 
-2. Start the app
-
-   ```bash
-    npx expo start
-   ```
-
-In the output, you'll find options to open the app in a
-
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
-
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
-
-## Get a fresh project
-
-When you're ready, run:
-
-```bash
-npm run reset-project
-```
-
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
-
-## Learn more
-
-To learn more about developing your project with Expo, look at the following resources:
-
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
-
-## Join the community
-
-Join our community of developers creating universal apps.
-
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
