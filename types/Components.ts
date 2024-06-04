@@ -47,12 +47,12 @@ export type BtnProps = {
 export type BtnGroupProps = {
   buttons: BtnProps[]
   onPress: (btn: BtnProps) => void
-  color: string
-  selectedId: string | number | undefined
+  color?: string
+  selectedId?: string | number | undefined
 }
 
 export type SearchProps = {
-  placeholder: string
+  placeholder?: string
   onSubmit: (text: string) => void
 }
 
