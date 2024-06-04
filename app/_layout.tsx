@@ -39,7 +39,7 @@ export default function RootLayout() {
             <Stack.Screen name="product/[id]" options={({ route }) => ({
               title: route.params.title
             })} />
-            <Stack.Screen name="shoppingCart" options={{ headerShown: true, title: 'Cart' }}  />
+            <Stack.Screen name="shoppingCart" options={{ headerShown: true, title: 'Cart', headerTitle: '' }}  />
             <Stack.Screen name="+not-found" />
           </Stack>
         </ThemeProvider>

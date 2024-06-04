@@ -18,9 +18,18 @@ const products = createSlice({
         state.items = state.items.map((item: Product) => item.id === existingItem.id ? { ...item, ...existingItem } : item)
       }
     },
+    updateItemQty: (state: any, action: any) => {
+      const {product: item, newQty} = action.payload as {product: CartItem, newQty: number}
+      state.items = state.items.map((i: CartItem) => {
+        if (i.id === item.id && i.selectedSize === item.selectedSize) {
+          return { ...i, qty: newQty }
+        }
+        return i
+      })
+    },
     removeItemFromCart: (state: any, action: any) => {
       const item = action.payload as CartItem
-      state.items = state.items.filter((i: CartItem) => i.id !== item.id)
+      state.items = state.items.filter((i: CartItem) => i.id !== item.id || i.selectedSize !== item.selectedSize)
     },
     invalidateCartItems: (state) => {
       state.items = []
@@ -32,6 +41,6 @@ export type RootState = {
   items: any[],
 }
 
-export const { invalidateCartItems, addItemsToCart,  } = products.actions
+export const { invalidateCartItems, addItemsToCart, removeItemFromCart, updateItemQty } = products.actions
 
 export default products.reducer

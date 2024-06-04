@@ -1,7 +1,7 @@
 
 import { CartItem, Product } from '@/types/Products';
 import { useDispatch, useSelector } from 'react-redux'
-import { addItemsToCart, invalidateCartItems, removeItemFromCart } from '@/store/store.products';
+import { addItemsToCart, invalidateCartItems, removeItemFromCart, updateItemQty } from '@/store/store.products';
 
 export const useAddToCart = (onSuccess = () => { }) => {
   const useAppDispatch = useDispatch.withTypes()
@@ -13,10 +13,20 @@ export const useAddToCart = (onSuccess = () => { }) => {
   return { addToCart };
 }
 
+export const useUpdateQty = (onSuccess = () => { }) => {
+  const useAppDispatch = useDispatch.withTypes()
+  const dispatch = useAppDispatch()
+  const updateQty = (product: CartItem, newQty: number) => {
+    dispatch(updateItemQty({ product, newQty } as any));
+    onSuccess();
+  }
+  return { updateQty };
+}
+
 export const useRemoveFromCart = (onSuccess = () => { }) => {
   const useAppDispatch = useDispatch.withTypes()
   const dispatch = useAppDispatch()
-  const removeFromCart = (item: Product) => {
+  const removeFromCart = (item: CartItem) => {
     dispatch(removeItemFromCart(item));
     onSuccess();
   }

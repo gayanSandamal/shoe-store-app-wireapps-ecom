@@ -1,7 +1,6 @@
-import { useAddToCart, useCartItems, useRemoveFromCart } from '@/hooks/useCart';
-import { View, Text, ScrollView, Image, TouchableOpacity } from 'react-native';
+import { useCartItems, useRemoveFromCart, useUpdateQty } from '@/hooks/useCart';
+import { View, Text, ScrollView, Image } from 'react-native';
 import { CartItem } from '@/types/Products';
-import { SafeAreaView } from 'react-native-safe-area-context';
 import { Btn } from '@/components/Base/Button';
 import { useResetCart } from "@/hooks/useCart";
 import { CartItemComponent } from '@/components/Cart/CartItem';
@@ -12,17 +11,14 @@ import { useState } from 'react';
 export default function ShoppingCartScreen() {
   const { items } = useCartItems()
   const { resetCart } = useResetCart()
-  const { addToCart } = useAddToCart()
+  const { removeFromCart } = useRemoveFromCart()
+  const { updateQty } = useUpdateQty()
 
   const [imageModalVisibility, setImageModalVisibility] = useState<boolean>(false)
   const [image, setImage] = useState<string>('')
 
-  const onAddToCart = (product: CartItem, qty: number) => {
-    addToCart(product, product.selectedSize, qty)
-  }
-
   const onRemove = (item: CartItem) => {
-    useRemoveFromCart(item)
+    removeFromCart(item)
   }
 
   const onPressImage = (item: CartItem) => {
@@ -49,15 +45,13 @@ export default function ShoppingCartScreen() {
       <ScrollView>
         <View className="p-4">
           {items.map((item: CartItem, index: number) => (
-            <>
-              <CartItemComponent
-                key={`${item.id}-${item.selectedSize}-${index}`}
-                item={item}
-                onRemove={() => onRemove(item)}
-                onUpdateQty={(product: CartItem, qty: number) => onAddToCart(product, qty)}
-                onPressImage={onPressImage}
-              />
-            </>
+            <CartItemComponent
+              key={index}
+              item={item}
+              onRemove={() => onRemove(item)}
+              onUpdateQty={(product: CartItem, qty: number) => updateQty(product, qty)}
+              onPressImage={onPressImage}
+            />
           ))}
         </View>
       </ScrollView>

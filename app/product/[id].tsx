@@ -51,8 +51,8 @@ const ProductPage = () => {
       <View>
         <View className={`flex flex-row items-center my-6`}>
           <Text className={`text-gray-500 mr-4`}>Select a size:</Text>
-          {sizes.map((size: string) => (
-            <Chip key={size} title={size} isActive={size == selectedSize} activeBgColor={'bg-gray-700'} activeColor={'text-white'} onPress={() => onSizePress(size)} />
+          {sizes.map((size: string, index: number) => (
+            <Chip key={index} title={size} isActive={size == selectedSize} activeBgColor={'bg-gray-700'} activeColor={'text-white'} onPress={() => onSizePress(size)} />
           ))}
         </View>
         <View className="flex flex-row items-center mt-4">
@@ -91,8 +91,8 @@ const ProductPage = () => {
         <Text className={`${stockStatus === 'IN STOCK' ? 'text-green-500' : 'text-red-600'}  font-bold my-2`}>{stockStatus}</Text>
         <View className={`flex flex-row items-center my-4`}>
           <Text className={`text-gray-500 mr-4`}>Available sizes:</Text>
-          {sizes.map((size: string) => (
-            <Chip key={size} title={size} onPress={getAddToCartQtyModal} />
+          {sizes.map((size: string, index: number) => (
+            <Chip key={index} title={size} onPress={getAddToCartQtyModal} />
           ))}
         </View>
         <View className="flex flex-row my-4 justify-between">
