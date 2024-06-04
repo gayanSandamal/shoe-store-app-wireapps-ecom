@@ -90,8 +90,8 @@ export type ChipsProps = {
 
 export type CartIndicatorProps = {
   size?: string
-  bgColor: string
-  color: string
+  bgColor?: string
+  color?: string
 }
 
 export type NumberInputProps = {
@@ -109,4 +109,5 @@ export type VividCardProps = {
     href: string
   }
   bgImgUri?: string
+  color?: string
 }

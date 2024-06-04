@@ -12,6 +12,8 @@ import { Product } from '@/types/Products';
 import { BtnProps } from '@/types/Components';
 import SearchBar from '@/components/Base/SearchBar';
 import { router } from 'expo-router';
+import { GET_OFFERS, NEW_COLLECTION } from '@/constants/ExternalAssets';
+import { Vivid } from '@/components/Wrappers/Offer';
 
 const ShopScreen = () => {
   const { data, isLoading } = useFetchAllProductsQuery({})
@@ -51,6 +53,10 @@ const ShopScreen = () => {
 
   const searchSection = <SearchBar placeholder="Search for products" onSubmit={setSearchQuery} />
 
+  const offerSection = <Vivid title="New Collection" subtitleLine1="Discount 50% for" subtitleLine2="the first transaction" button={{ title: 'Shop Now', href: "/shop" }} bgImgUri={NEW_COLLECTION} />
+
+  const latestOffersSection = <Vivid title="Get Latest Offers" subtitleLine1="Discounts upto 75%" button={{ title: 'Sign-up Now' }} bgImgUri={GET_OFFERS}/>
+
   const categoriesSection = <CategoriesStrip categories={getUniqueCategories(data)} onCategoryPress={onPressCategory} selectedCategoryId={selectedCategoryId} />
 
   const navigateToProduct = (product: Product) => {
@@ -65,10 +71,14 @@ const ShopScreen = () => {
         <View className="px-4">
           {/* search section */}
           <ContentSection slot={searchSection} cardMode={false} />
+          {/* offer section */}
+          <ContentSection slot={offerSection} />
           {/* categories section */}
           <ContentSection title="Quick Filter by Categories" slot={categoriesSection} cardMode={false} />
           {/* Recommendations section */}
           <ContentSection title="All Products" slot={productsSection} cardMode={false} />
+          {/* offer section */}
+          <ContentSection slot={latestOffersSection} />
           <StatusBar style="auto" />
         </View>
       </ScrollView>

@@ -32,7 +32,7 @@ const HomeScreen = () => {
   const navigateToProduct = (product: Product) => {
     router.push({ pathname: '/product/[id]', params: { id: product.id, title: product.name } });
   }
-  const productsSection = <Products products={data.slice(0, 4)} isLoading={isLoading} onPress={navigateToProduct} />
+  const productsSection = <Products products={data?.slice(0, 4)} isLoading={isLoading} onPress={navigateToProduct} />
 
   return (
     <SafeAreaView>
