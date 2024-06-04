@@ -35,10 +35,11 @@ export default function RootLayout() {
       <PersistGate loading={null} persistor={persistor}>
         <ThemeProvider value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
           <Stack>
-            <Stack.Screen name="(tabs)" options={{ headerShown: false, headerTitle: 'Back' }} />
+            <Stack.Screen name="(tabs)" options={{ headerShown: false, headerTitle: '' }} />
             <Stack.Screen name="product/[id]" options={({ route }) => ({
               title: route.params.title
             })} />
+            <Stack.Screen name="shoppingCart" options={{ headerShown: true, title: 'Cart' }}  />
             <Stack.Screen name="+not-found" />
           </Stack>
         </ThemeProvider>

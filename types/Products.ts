@@ -31,6 +31,16 @@ export type Product = {
   description: string
 }
 
+export type CartOptions = {
+  uniqueId?: string
+  orderId?: number
+  product: Product
+  selectedSize: string
+  qty: number
+}
+
+export type CartItem = Product & CartOptions
+
 export type ProductProps = {
   product: Product
   key: string | number

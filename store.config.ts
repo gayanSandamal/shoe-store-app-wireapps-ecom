@@ -2,14 +2,11 @@ import { configureStore, combineReducers } from '@reduxjs/toolkit'
 import productsReducer from './store/store.products'
 import { productsApi } from './api/productsApi'
 
-//persist storage
 import AsyncStorage from '@react-native-async-storage/async-storage';
+
 import {
   persistReducer, persistStore, FLUSH,
-  REHYDRATE,
-  PAUSE,
   PERSIST,
-  PURGE,
   REGISTER,
 } from 'redux-persist';
 
@@ -30,10 +27,9 @@ export function setupStore(preloadedState = {} as any) {
     middleware: (getDefaultMiddleware) =>
       getDefaultMiddleware({
         serializableCheck: {
-          ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
+          ignoredActions: [FLUSH, PERSIST, REGISTER],
         },
       }).concat(productsApi.middleware),
-    devTools: process.env.NODE_ENV !== 'production',
     preloadedState
   })
 }

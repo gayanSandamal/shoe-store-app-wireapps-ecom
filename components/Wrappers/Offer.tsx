@@ -2,8 +2,9 @@ import { Colors } from "@/constants/Colors"
 import { ImageBackground, View, Text } from "react-native"
 import { useColorScheme } from '@/hooks/useColorScheme';
 import { BtnLink } from "../Base/Button";
+import { VividCardProps } from "@/types/Components";
 
-export const Vivid = (props: any) => {
+export const Vivid = (props: VividCardProps) => {
   const { title, subtitleLine1, subtitleLine2, button, bgImgUri = '' } = props;
   const colorScheme = useColorScheme();
   return (<View className="overflow-hidden overflow-hidden rounded-xl" style={{ backgroundColor: Colors[colorScheme ?? 'light'].primary }}>

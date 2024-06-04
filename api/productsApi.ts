@@ -2,11 +2,12 @@ import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
 
 export const productsApi = createApi({
   reducerPath: 'productsApi',
+  // TODO: Move to .env
   baseQuery: fetchBaseQuery({ baseUrl: 'https://s3-eu-west-1.amazonaws.com/api.themeshplatform.com/' }),
   endpoints: (builder) => ({
     fetchAllProducts: builder.query({
       query: () => `products.json`,
-      transformResponse: (response: any) => response?.data || [], // Extracts the 'data' property from the response
+      transformResponse: (response: {[key: string]: any}) => response?.data || [],
     }),
   }),
 })

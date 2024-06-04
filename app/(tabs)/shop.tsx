@@ -1,5 +1,5 @@
 import { StatusBar } from 'expo-status-bar';
-import React, { useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { ScrollView, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { ContentSection } from '@/components/Wrappers/Sections';
@@ -17,16 +17,37 @@ const ShopScreen = () => {
   const { data, isLoading } = useFetchAllProductsQuery({})
   const [selectedCategoryId, setSelectedCategoryId] = useState<string | number | undefined>()
   const [searchQuery, setSearchQuery] = useState<string>("")
+  const [filteredData, setFilteredData] = useState<Product[]>(data)
 
   const onPressCategory = (category: BtnProps) => {
     if (selectedCategoryId === category.id) {
       setSelectedCategoryId(undefined)
-      return true
+    } else {
+      setSelectedCategoryId(category.id)
     }
-    setSelectedCategoryId(category.id)
   }
+  const searchBarRef = useRef()
+  // category filteration
+  useEffect(() => {
+    const filteredResult = data.filter((product: Product) => {
+      if (!selectedCategoryId) return true
+      return selectedCategoryId === product.brandName
+    })
+    setFilteredData(filteredResult)
+    setSearchQuery("")
+  }, [selectedCategoryId])
 
-  const filteredData = selectedCategoryId || searchQuery ? data.filter((product: Product) => selectedCategoryId === product.brandName || product.name.toLowerCase().includes(searchQuery.toLowerCase())) : data
+  // search filteration
+  useEffect(() => {
+    const filteredResult = data.filter((product: Product) => {
+      if (!searchQuery) return true
+      const productNameLowerCase = product.name.toLowerCase()
+      const searchQueryLowerCase = searchQuery.toLowerCase()
+      return productNameLowerCase.includes(searchQueryLowerCase)
+    })
+    setFilteredData(filteredResult)
+    setSelectedCategoryId(undefined)
+  }, [searchQuery])
 
   const searchSection = <SearchBar placeholder="Search for products" onSubmit={setSearchQuery} />
 

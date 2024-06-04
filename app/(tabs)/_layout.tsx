@@ -58,15 +58,6 @@ export default function TabLayout() {
         }}
       />
       <Tabs.Screen
-        name="shoppingCart"
-        options={{
-          title: 'Shopping Cart',
-          tabBarIcon: ({ color, focused }) => (
-            <TabBarIcon name={focused ? 'cart' : 'cart-outline'} color={color} />
-          ),
-        }}
-      />
-      <Tabs.Screen
         name="profile"
         options={{
           title: 'Profile',
