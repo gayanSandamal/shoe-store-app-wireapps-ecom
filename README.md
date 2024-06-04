@@ -23,10 +23,14 @@ This document provides a detailed overview of the technical aspects of this Reac
       <td><img src="/screenshots/screenshot-2.png" width="150" height="300"/></td>
       <td><img src="/screenshots/screenshot-3.png" width="150" height="300"/></td>
       <td><img src="/screenshots/screenshot-4.png" width="150" height="300"/></td>
+   </tr>
+   <tr>
       <td><img src="/screenshots/screenshot-5.png" width="150" height="300"/></td>
       <td><img src="/screenshots/screenshot-6.png" width="150" height="300"/></td>
       <td><img src="/screenshots/screenshot-7.png" width="150" height="300"/></td>
       <td><img src="/screenshots/screenshot-8.png" width="150" height="300"/></td>
+   </tr>
+   <tr>
       <td><img src="/screenshots/screenshot-9.png" width="150" height="300"/></td>
       <td><img src="/screenshots/screenshot-10.png" width="150" height="300"/></td>
       <td><img src="/screenshots/screenshot-11.png" width="150" height="300"/></td>
