@@ -1,6 +1,6 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
-import { CharmBtn, Btn, BtnGroup, BtnLink } from '../../Base/Button';
+import { CharmBtn, Btn, BtnGroup, BtnLink } from '@/components/Base/Button';
 
 describe('<CharmBtn />', () => {
   it('rendered sucessfully', () => {
