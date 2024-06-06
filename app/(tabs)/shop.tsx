@@ -1,5 +1,5 @@
 import { StatusBar } from 'expo-status-bar';
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef, useState, useMemo } from 'react';
 import { ScrollView, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { ContentSection } from '@/components/Wrappers/Sections';
@@ -51,19 +51,19 @@ const ShopScreen = () => {
     setSelectedCategoryId(undefined)
   }, [searchQuery])
 
-  const searchSection = <SearchBar placeholder="Search for products" onSubmit={setSearchQuery} />
+  const searchSection = useMemo(() => <SearchBar placeholder="Search for products" onSubmit={setSearchQuery} />, [searchQuery])
 
-  const offerSection = <Vivid title="New Collection" subtitleLine1="Discount 50% for" subtitleLine2="the first transaction" button={{ title: 'Shop Now', href: "/shop" }} bgImgUri={NEW_COLLECTION} />
+  const offerSection = useMemo(() => <Vivid title="New Collection" subtitleLine1="Discount 50% for" subtitleLine2="the first transaction" button={{ title: 'Shop Now', href: "/shop" }} bgImgUri={NEW_COLLECTION} />, [NEW_COLLECTION])
 
-  const latestOffersSection = <Vivid title="Get Latest Offers" subtitleLine1="Discounts upto 75%" button={{ title: 'Sign-up Now' }} bgImgUri={GET_OFFERS}/>
+  const latestOffersSection = useMemo(() => <Vivid title="Get Latest Offers" subtitleLine1="Discounts upto 75%" button={{ title: 'Sign-up Now' }} bgImgUri={GET_OFFERS}/>, [GET_OFFERS])
 
-  const categoriesSection = <CategoriesStrip categories={getUniqueCategories(data)} onCategoryPress={onPressCategory} selectedCategoryId={selectedCategoryId} />
+  const categoriesSection = useMemo(() => <CategoriesStrip categories={getUniqueCategories(data)} onCategoryPress={onPressCategory} selectedCategoryId={selectedCategoryId} />, [data, selectedCategoryId])
 
   const navigateToProduct = (product: Product) => {
     router.push({ pathname: '/product/[id]', params: { id: product.id, title: product.name } });
   }
 
-  const productsSection = <Products products={filteredData} isLoading={isLoading} onPress={navigateToProduct} />
+  const productsSection = useMemo(() => <Products products={filteredData} isLoading={isLoading} onPress={navigateToProduct} />, [filteredData])
 
   return (
     <SafeAreaView>

@@ -1,5 +1,5 @@
 import { StatusBar } from 'expo-status-bar';
-import React from 'react';
+import React, { useMemo } from 'react';
 import { ScrollView, Text, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { Vivid } from '@/components/Wrappers/Offer';
@@ -27,12 +27,12 @@ const HomeScreen = () => {
     </View>
   </View>
 
-  const offerSection = <Vivid title="New Collecti\on" subtitleLine1="Discount 50% for" subtitleLine2="the first transaction" button={{ title: 'Shop Now', href: "/shop" }} bgImgUri={NEW_COLLECTION} />
+  const offerSection = useMemo(() =><Vivid title="New Collecti\on" subtitleLine1="Discount 50% for" subtitleLine2="the first transaction" button={{ title: 'Shop Now', href: "/shop" }} bgImgUri={NEW_COLLECTION} />, [NEW_COLLECTION])
 
   const navigateToProduct = (product: Product) => {
     router.push({ pathname: '/product/[id]', params: { id: product.id, title: product.name } });
   }
-  const productsSection = <Products products={data?.slice(0, 4)} isLoading={isLoading} onPress={navigateToProduct} />
+  const productsSection = useMemo(() => <Products products={data?.slice(0, 4)} isLoading={isLoading} onPress={navigateToProduct} />, [data])
 
   return (
     <SafeAreaView>
