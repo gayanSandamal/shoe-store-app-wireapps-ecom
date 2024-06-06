@@ -1,5 +1,5 @@
 import { useLocalSearchParams } from "expo-router";
-import React, { useState } from 'react';
+import React, { useState, useMemo } from 'react';
 import { View, Image, Text, ScrollView } from 'react-native';
 import { useFetchAllProductsQuery } from './../../api'
 import { Product } from "@/types/Products";
@@ -46,7 +46,7 @@ const ProductPage = () => {
     addToCart(product, selectedSize, qty)
   }
 
-  const qtyModalContent = () => {
+  const qtyModalContent = useMemo(() => () => {
     return (
       <View>
         <View className={`flex flex-row items-center my-6`}>
@@ -65,7 +65,7 @@ const ProductPage = () => {
         </View>
       </View>
     )
-  }
+  }, [selectedSize, qty])
 
   return (
     <ScrollView className={`flex flex-col bg-gray-100 p-4`} contentContainerStyle={{ paddingBottom: 60 }}>
